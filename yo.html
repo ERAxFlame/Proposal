@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impress Your Crush</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent overflow content */
+    background-color: pink; /* Set background color to pink */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: background-slide 10s linear infinite alternate; /* Adjust animation duration and timing */
+  }
+
+  @keyframes background-slide {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+  .heart-container {
+    position: relative;
+    margin-bottom: 20px; /* Add margin to create space between heart and text */
+  }
+
+  .heart {
+    width: 100px;
+    height: 90px;
+    position: absolute;
+    top: -60px; /* Adjust top position to move heart above text */
+    left: calc(50% - 50px); /* Adjust left position to center heart */
+    animation: heartbeat 1s infinite;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background-color: #ff385c;
+    border-radius: 50px 50px 0 0;
+  }
+
+  .heart::before {
+    left: 50px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+
+  .heart::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+
+  .buttons {
+    margin-top: 20px;
+  }
+
+  .buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  @keyframes heartbeat {
+    0% {
+      transform: scale(0.75);
+    }
+    20% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(0.75);
+    }
+    60% {
+      transform: scale(1);
+    }
+    80% {
+      transform: scale(0.75);
+    }
+    100% {
+      transform: scale(0.75);
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="content">
+    <div class="heart-container">
+      <div class="heart"></div>
+    </div>
+    <h1>Will you be my girlfriend?</h1>
+    <p>I love you so much</p>
+    <div class="buttons">
+      <button id="yesButton">Yes</button>
+      <button id="noButton">No</button>
+    </div>
+  </div>
+
+  <script>
+    // Add event listener to the "No" button
+    const noButton = document.getElementById('noButton');
+    noButton.addEventListener('click', function() {
+      // Calculate random position within the window dimensions
+      const newX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const newY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+      
+      // Set the button's position to the new coordinates
+      noButton.style.left = newX + 'px';
+      noButton.style.top = newY + 'px';
+    });
+  </script>
+</body>
+</html>
